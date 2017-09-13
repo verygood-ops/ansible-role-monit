@@ -19,6 +19,7 @@ monit_rollbar_enabled: false
 monit_rollbar_targets: []
 monit_rollbar_token:
 monit_rollbar_environment:
+monit_rollbar_role:
 
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"

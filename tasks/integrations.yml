@@ -20,5 +20,5 @@
 - name: enable and start rollbar-agent
   service:
     name: rollbar-agent
-    state: started
+    state: restarted
     enabled: yes
