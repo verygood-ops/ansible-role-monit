@@ -25,7 +25,8 @@ max_file_age = 86400
 # example: log_levels = {'notset': 0, 'debug': 10, 'info': 20, 'warning': 30, 'error': 40, 'critical': 50}
 # log_levels = {'notset': 0, 'debug': 10, 'info': 20, 'warning': 30, 'error': 40, 'critical': 50}
 
-[{{monit_rollbar_env_type}}:{{monit_rollbar_environment}}]
+# not customizeable
+[app:myapp]
 # rollbar project access token
 params.access_token = {{monit_rollbar_token}}
 # environment name - any string up to 255 chars is fine.
@@ -63,7 +64,7 @@ log_format.default = monit
 blacklist =
 
 # don't send any events below this log level
-min_log_level = error
+min_log_level = info 
 
 # regex patterns that will match strings to be replaced with asterisks
 # syntax: one regex pattern per line
