@@ -11,7 +11,14 @@
     src: rollbar-agent.j2
     dest: /etc/rollbar-agent.conf
 
+- name: copy rollbar-agent config file
+  template:
+    src: rollbar-agent-init.sh.j2
+    mode: 0755
+    dest: /etc/init.d/rollbar-agent
+
 - name: enable and start rollbar-agent
   service:
     name: rollbar-agent
+    state: started
     enabled: yes
