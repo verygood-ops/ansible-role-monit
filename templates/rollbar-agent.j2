@@ -27,10 +27,10 @@ max_file_age = 86400
 
 [app:myapp]
 # rollbar project access token
-params.access_token = {{monit_rollbar.token}}
+params.access_token = {{monit_rollbar_token}}
 # environment name - any string up to 255 chars is fine.
 # Use 'production' for your production environment.
-params.environment = {{monit_rollbar.environment}}
+params.environment = {{monit_rollbar_environment}}
 # code root
 # params.root = /path/to/code/root
 # current branch
@@ -42,7 +42,7 @@ params.branch = master
 
 # files or directories (non-recursive) to process
 # separate by whitespace
-targets = {% for target in monit_rollbar.targets %}
+targets = {% for target in monit_rollbar_targets %}
   {{ target }}
 {% endfor %}
 

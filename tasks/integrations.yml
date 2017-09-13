@@ -4,7 +4,7 @@
   pip:
     name: rollbar-agent
     version: 0.4.0
-  when: monit_rollbar.enabled
+  when: monit_rollbar_enabled
 
 - name: copy rollbar-agent config file
   template:
