@@ -25,7 +25,7 @@ max_file_age = 86400
 # example: log_levels = {'notset': 0, 'debug': 10, 'info': 20, 'warning': 30, 'error': 40, 'critical': 50}
 # log_levels = {'notset': 0, 'debug': 10, 'info': 20, 'warning': 30, 'error': 40, 'critical': 50}
 
-[{{monit_rollbar_environment}}:{{monit_rollbar_role}}]
+[{{monit_rollbar_env_type}}:{{monit_rollbar_environment}}]
 # rollbar project access token
 params.access_token = {{monit_rollbar_token}}
 # environment name - any string up to 255 chars is fine.
