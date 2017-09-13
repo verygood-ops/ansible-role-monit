@@ -1,0 +1,17 @@
+---
+
+- name: install rollbar-agent pip module
+  pip:
+    name: rollbar-agent
+    version: 0.4.0
+  when: monit_rollbar.enabled
+
+- name: copy rollbar-agent config file
+  template:
+    src: rollbar-agent.j2
+    dest: /etc/rollbar-agent.conf
+
+- name: enable and start rollbar-agent
+  service:
+    name: rollbar-agent
+    enabled: yes

@@ -15,7 +15,11 @@ monit_webinterface_enabled: false
 monit_webinterface_bind: 0.0.0.0
 monit_webinterface_port: 2812
 
-monit_rollbar_integration: false
+monit_rollbar:
+  enabled: false
+  targets: []
+  token:
+  environment:
 
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"

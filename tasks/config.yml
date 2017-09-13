@@ -28,7 +28,6 @@
     group: root
     mode: 0644
   notify: restart monit
-  when: monit_webinterface_enabled
 
 - name: config - Setup mail alerts
   template:
