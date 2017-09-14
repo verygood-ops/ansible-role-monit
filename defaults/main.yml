@@ -23,6 +23,8 @@ monit_rollbar_environment:
 monit_rollbar_env_type:
 monit_slack_webhook_url:
 
+monit_basic_monitors_enabled: true
+
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"
  - "if totalmem > 400.0 MB for 5 cycles then alert"
