@@ -29,3 +29,8 @@
     src: slack.sh
     dest: /usr/local/bin/slack.sh
     mode: 0755
+
+- name: put webhook URL in place
+  lineinfile:
+    path: /etc/monit/slack-url
+    line: "{{monit_slack_webhook_url}}"

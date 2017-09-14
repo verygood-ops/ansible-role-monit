@@ -19,6 +19,7 @@ monit_rollbar_enabled: false
 monit_rollbar_targets:
   - /var/log/monit.log
 monit_rollbar_token:
+monit_slack_webhook_url:
 
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"
