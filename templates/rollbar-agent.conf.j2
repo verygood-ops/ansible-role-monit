@@ -31,7 +31,7 @@ max_file_age = 86400
 params.access_token = {{monit_rollbar_token}}
 # environment name - any string up to 255 chars is fine.
 # Use 'production' for your production environment.
-params.environment = {{monit_rollbar_environment}}
+params.environment = {{monit_rollbar_environment}}/{{monit_rollbar_env_type}}
 # code root
 params.root = /path/to/code/root
 # current branch
@@ -64,7 +64,7 @@ log_format.default = monit
 blacklist =
 
 # don't send any events below this log level
-min_log_level = info 
+min_log_level = info
 
 # regex patterns that will match strings to be replaced with asterisks
 # syntax: one regex pattern per line
