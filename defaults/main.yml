@@ -21,6 +21,7 @@ monit_rollbar_targets:
 monit_rollbar_token:
 monit_rollbar_environment:
 monit_rollbar_env_type:
+monit_rollbar_min_log_level: info
 monit_slack_webhook_url:
 
 monit_basic_monitors_enabled: true
