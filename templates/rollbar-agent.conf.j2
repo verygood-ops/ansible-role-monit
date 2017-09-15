@@ -64,7 +64,7 @@ log_format.default = monit
 blacklist =
 
 # don't send any events below this log level
-min_log_level = info
+min_log_level = {{monit_rollbar_min_log_level}}
 
 # regex patterns that will match strings to be replaced with asterisks
 # syntax: one regex pattern per line
