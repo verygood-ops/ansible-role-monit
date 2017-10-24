@@ -1,4 +1,4 @@
-check system basic 
+check system {{ monit_ansible_role_name }}
   if memory > 80% for 2 cycles then
   {%- if monit_slack_webhook_url is defined %}
     exec "/usr/local/bin/slack.sh" else if succeeded then exec "/usr/local/bin slack.sh"
@@ -17,7 +17,7 @@ check system basic
   {% else %}
     alert
   {% endif -%}
-  if cpu usage (system) > 20% for 4 cycles then
+  if cpu usage (system) > 40% for 4 cycles then
   {%- if monit_slack_webhook_url is defined %}
     exec "/usr/local/bin/slack.sh" else if succeeded then exec "/usr/local/bin slack.sh"
   {% else %}
