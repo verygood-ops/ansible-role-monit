@@ -28,7 +28,6 @@ scenario:
     - create
     - prepare
     - converge
-    - lint
     - side_effect
     - verify
     - destroy
