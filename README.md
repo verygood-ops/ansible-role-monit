@@ -16,6 +16,15 @@ Requirements
 
 An Ansible ready host.
 
+Molecule
+------------
+
+molecule default directories structure can be created with commands:
+```
+molecule init scenario --scenario-name default --role-name ansible-role-monit
+molecule init role --role-name ansible-role-monit
+```
+
 Role Variables
 --------------
 
