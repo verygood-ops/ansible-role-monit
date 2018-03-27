@@ -11,6 +11,9 @@ platforms:
     privileged: true
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      remote_tmp: /tmp/.ansible-${USER}/tmp
   lint:
     name: ansible-lint
 verifier:
@@ -28,6 +31,7 @@ scenario:
     - create
     - prepare
     - converge
+
     - side_effect
     - verify
     - destroy
