@@ -30,7 +30,7 @@ check system {{ monit_ansible_role_name }}_system_monitor
     alert
   {% endif %}
 
-check filesystem rootfs with path /
+check filesystem {{ monit_ansible_role_name }}_rootfs with path /
   if space usage > 80% then
   {%- if monit_slack_webhook_url is defined %}
     exec "/usr/local/bin/slack.sh" else if succeeded then exec "/usr/local/bin slack.sh"
