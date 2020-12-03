@@ -12,9 +12,7 @@ provisioner:
   #idempotency_test true
 
 platforms:
-  - name: ubuntu
-    driver_config:
-      image: ubuntu-20.04
+  - name: ubuntu-20.04
 
 suites:
   - name: default
