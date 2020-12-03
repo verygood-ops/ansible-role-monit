@@ -1,6 +1,8 @@
 Monit
 ========
 
+[![Circle CI](https://circleci.com/gh/verygood-ops/ansible-role-monit.svg?style=svg)](https://circleci.com/gh/verygood-ops/ansible-role-monit)
+
 Ansible role for configuring Monit. Sample usage see [example.yml](http://github.com/pgolm/ansible-playbook-monit/blob/master/example.yml).
 
 Install
