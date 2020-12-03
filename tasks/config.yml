@@ -42,3 +42,9 @@
 - name: log rotation
   template: src=logrotate.j2 dest=/etc/logrotate.d/rollbar-agent owner=root group=root mode=0644
   when: monit_rollbar_enabled
+
+- name: Allow read access to monit log file
+  file:
+    path: /var/log/monit.log
+    state: touch
+    mode: a+r
