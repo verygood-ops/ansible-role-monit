@@ -8,13 +8,13 @@ provisioner:
   playbook: tests/default.yml
   hosts: all
   ansible_verbose: true
-  #ansible_version: 2.2.0
+  ansible_version: 2.8.17
   #idempotency_test true
 
 platforms:
   - name: ubuntu
     driver_config:
-      image: ubuntu:20.04
+      image: ubuntu-20.04
 
 suites:
   - name: default
