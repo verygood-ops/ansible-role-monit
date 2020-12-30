@@ -48,3 +48,9 @@
     path: /var/log/monit.log
     state: touch
     mode: a+r
+
+- name: updating monit's logrotate
+  lineinfile:
+    line='create 644 root adm'
+    dest='/etc/logrotate.d/monit'
+    regexp='^create 640 root adm'
