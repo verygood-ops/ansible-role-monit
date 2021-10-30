@@ -1,5 +1,7 @@
 monit_install_from_source: false
 monit_src_version: 5.29.0
+monit_install_bin: false
+monit_bin_version: 5.29.0
 monit_src_config_params: "--disable-install-doc --without-pam"
 monit_cycle: 120
 monit_delay: 300

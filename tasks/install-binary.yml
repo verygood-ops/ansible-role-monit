@@ -1,0 +1,30 @@
+---
+- when: monit_install_bin
+  block:
+    - name: Download Monit binary
+      get_url:
+        url: "https://www.mmonit.com/monit//dist/binary/{{monit_bin_version}}/monit-{{monit_bin_version}}-linux-x64.tar.gz"
+        dest: "/tmp/monit-{{monit_bin_version}}-linux-x64.tar.gz"
+
+    - name: Extract archive
+      unarchive:
+        src: "/tmp/monit-{{monit_bin_version}}-linux-x64.tar.gz"
+        dest: /tmp/
+        creates: "/tmp/monit-{{monit_bin_version}}/bin/monit"
+        copy: false
+
+    - name: copy monit binary
+      copy:
+        src: /tmp/monit-{{monit_bin_version}}/bin/monit
+        dest: /usr/bin/monit
+        mode: 0755
+
+    - name: Remove tmp directory
+      file:
+        path: "/tmp/monit-{{monit_bin_version}}"
+        state: absent
+
+    - name: Remove archive
+      file:
+        path: "/tmp/monit-{{monit_bin_version}}.tar.gz"
+        state: absent
