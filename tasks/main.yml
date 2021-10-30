@@ -12,6 +12,10 @@
   tags: [monit_src, monit_install]
   when: monit_install_from_source
 
+- include: install-binary.yml
+  tags: [monit_bin, monit_install]
+  when: monit_install_bin
+
 - include: config.yml
   tags: monit_config
 
