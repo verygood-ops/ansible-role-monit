@@ -1,0 +1,43 @@
+---
+- when: monit_install_from_source
+  block:
+    - name: Download Monit
+      get_url:
+        url: "https://mmonit.com/monit/dist/monit-{{monit_src_version}}.tar.gz"
+        dest: "/tmp/monit-{{monit_src_version}}.tar.gz"
+
+    - name: Extract archive
+      unarchive:
+        src: "/tmp/monit-{{monit_src_version}}.tar.gz"
+        dest: /tmp/
+        creates: "/tmp/monit-{{monit_src_version}}/CONTRIBUTORS"
+        copy: false
+
+    - name: Configure install
+      command: ./configure {{monit_src_config_params}}
+      args:
+        chdir: "/tmp/monit-{{monit_src_version}}"
+        creates: "/tmp/monit-{{monit_src_version}}/config.status"
+
+    - name: Build monit
+      command: make
+      args:
+        chdir: "/tmp/monit-{{monit_src_version}}"
+        creates: "/tmp/monit-{{monit_src_version}}/monit"
+
+    - name: Install monit
+      become: true
+      command: make install
+      args:
+        chdir: "/tmp/monit-{{monit_src_version}}"
+        creates: /usr/local/bin/monit
+
+    - name: Remove build directory
+      file:
+        path: "/tmp/monit-{{monit_src_version}}"
+        state: absent
+
+    - name: Remove archive
+      file:
+        path: "/tmp/monit-{{monit_src_version}}.tar.gz"
+        state: absent
