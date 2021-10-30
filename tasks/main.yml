@@ -1,15 +1,19 @@
 ---
 - include: debian/pkg.yml
   tags: monit_pkg
-  when: ansible_os_family == "Debian"
+  when:
+    - ansible_os_family == "Debian"
+    - not monit_install_from_source
 
 - include: redhat/pkg.yml
   tags: monit_pkg
-  when: ansible_os_family == "RedHat"
+  when:
+    - ansible_os_family == "RedHat"
+    - not monit_install_from_source
 
 - include: install-from-source.yml
   tags: monit_src
-  when: monit_reinstall_from_source
+  when: monit_install_from_source
 
 - include: config.yml
   tags: monit_config
