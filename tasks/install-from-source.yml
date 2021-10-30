@@ -1,0 +1,39 @@
+---
+- when: monit_reinstall_from_source
+  block:
+    - name: Download Monit
+      get_url:
+        url: "https://mmonit.com/monit/dist/binary/{{monit_src_version}}/monit-{{monit_src_version}}-linux-x64.tar.gz"
+        dest: "/tmp/monit-{{monit_src_version}}-linux-x64.tar.gz"
+
+    - name: Extract archive
+      unarchive:
+        src: "/tmp/monit-{{monit_src_version}}-linux-x64.tar.gz"
+        dest: /tmp/
+        copy: false
+
+    - name: Configure install
+      command: ./configure
+      args:
+        chdir: "/tmp/monit-{{monit_src_version}}"
+
+    - name: Build monit
+      command: make
+      args:
+        chdir: "/tmp/monit-{{monit_src_version}}"
+
+    - name: Install monit
+      become: true
+      command: make install
+      args:
+        chdir: "/tmp/monit-{{monit_src_version}}"
+
+    - name: Remove build directory
+      file:
+        path: "/tmp/monit-{{monit_src_version}}"
+        state: absent
+
+    - name: Remove archive
+      file:
+        path: "/tmp/monit-{{monit_src_version}}.tar.gz"
+        state: absent

@@ -7,6 +7,10 @@
   tags: monit_pkg
   when: ansible_os_family == "RedHat"
 
+- include: install-from-source.yml
+  tags: monit_src
+  when: monit_reinstall_from_source
+
 - include: config.yml
   tags: monit_config
 
