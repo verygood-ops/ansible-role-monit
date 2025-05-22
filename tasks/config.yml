@@ -1,6 +1,6 @@
 ---
 - include_vars: debian.yml
-  when:  ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian"
 
 - include_vars: redhat.yml
   when: ansible_os_family == "RedHat"
@@ -51,18 +51,15 @@
 
 - name: configure monit log rotation
   template: src=logrotate.j2 dest=/etc/logrotate.d/monit owner=root group=root mode=0644
-  when: monit_install_from_source
 
 # monit from pkg has broken logrotate config
 - when: not monit_install_from_source
   block:
     - name: fixing monit's logrotate
-      lineinfile:
-        line='create 644 root adm'
+      lineinfile: line='create 644 root adm'
         dest='/etc/logrotate.d/monit'
         regexp="^\s*create 640 root adm"
     - name: updating monit's logrotate with su parameter
-      lineinfile:
-        line='su root adm'
+      lineinfile: line='su root adm'
         dest='/etc/logrotate.d/monit'
         insertafter="^create 644 root adm"
