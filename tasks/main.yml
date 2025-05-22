@@ -1,29 +1,29 @@
 ---
 - when: not monit_install_from_source
   block:
-    - include: debian/pkg.yml
+    - include_tasks: debian/pkg.yml
       when: ansible_os_family == "Debian"
 
-    - include: redhat/pkg.yml
+    - include_tasks: redhat/pkg.yml
       when: ansible_os_family == "RedHat"
   tags: [monit_pkg, monit_install]
 
-- include: install-from-source.yml
+- include_tasks: install-from-source.yml
   tags: [monit_src, monit_install]
   when: monit_install_from_source
 
-- include: install-binary.yml
+- include_tasks: install-binary.yml
   tags: [monit_bin, monit_install]
   when: monit_install_bin
 
-- include: config.yml
+- include_tasks: config.yml
   tags: monit_config
 
-- include: custom.yml
+- include_tasks: custom.yml
   tags: monit_custom
 
-- include: monitors.yml
+- include_tasks: monitors.yml
   tags: monit_monitors
 
-- include: integrations.yml
+- include_tasks: integrations.yml
   tags: monit_integrations
